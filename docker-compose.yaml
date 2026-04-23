@@ -1,6 +1,6 @@
 services:
   ollama:
-    image: ollama/ollama:0.20.5
+    image: ollama/ollama:0.21.1
     container_name: ollama
     restart: unless-stopped
     ports:
@@ -18,7 +18,7 @@ services:
             - capabilities: [gpu]
 
   open-webui:
-    image: ghcr.io/open-webui/open-webui:0.8.12
+    image: ghcr.io/open-webui/open-webui:0.9.1
     container_name: open-webui
     restart: unless-stopped
     depends_on:
