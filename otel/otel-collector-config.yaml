@@ -6,14 +6,14 @@ receivers:
 
 exporters:
   prometheus:
-    endpoint: "0.0.0.0:8889"
+    endpoint: "0.0.0.0:9090"
 
-  jaeger:
-    endpoint: jaeger:14250
+  otlp:
+    endpoint: jaeger:16686
     tls:
       insecure: true
 
-  logging:
+  debug:
 
 processors:
   batch:
@@ -23,9 +23,9 @@ service:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [jaeger, logging]
+      exporters: [otlp, debug]
 
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [prometheus, logging]
+      exporters: [prometheus, debug]
